@@ -1,0 +1,8 @@
+websocket url = wss://livenv-ijsnbx59.livekit.cloud
+Api Key = APIaKMX7R24iyPA
+Api Secret = DAVVvOqtYWIbDJexf27Hyeu9eEiAx6eCyoTYa0DD1aZA
+
+EnV = 
+LIVEKIT_URL=wss://livenv-ijsnbx59.livekit.cloud
+LIVEKIT_API_KEY=APIaKMX7R24iyPA
+LIVEKIT_API_SECRET=DAVVvOqtYWIbDJexf27Hyeu9eEiAx6eCyoTYa0DD1aZA
