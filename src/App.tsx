@@ -10,7 +10,6 @@ import { TokenSource } from 'livekit-client';
 import '@livekit/components-styles';
 import './App.css';
 
-// Membuat sumber token untuk keperluan development
 const tokenSource = TokenSource.developmentTokenServer(
   import.meta.env.VITE_LIVEKIT_TOKEN_SERVER_ID,
 );
@@ -26,7 +25,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Meminta token dan bergabung ke room
   const joinRoom = async () => {
     if (!roomName.trim() || !participantName.trim()) {
       setError('Nama dan room wajib diisi.');
@@ -55,7 +53,6 @@ function App() {
     }
   };
 
-  // Jika belum terhubung, tampilkan form bergabung
   if (!connection) {
     return (
       <main className="join-page">
@@ -105,7 +102,6 @@ function App() {
     );
   }
 
-  // Tampilan video conference dan chat
   return (
     <main className="meeting-page">
       <LiveKitRoom
