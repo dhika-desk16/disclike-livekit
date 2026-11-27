@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import {
   LiveKitRoom,
@@ -8,7 +7,6 @@ import {
 import { TokenSource } from 'livekit-client';
 
 import '@livekit/components-styles';
-import './App.css';
 
 const tokenSource = TokenSource.developmentTokenServer(
   import.meta.env.VITE_LIVEKIT_TOKEN_SERVER_ID,
@@ -55,46 +53,70 @@ function App() {
 
   if (!connection) {
     return (
-      <main className="join-page">
+      <main className="flex min-h-screen items-center justify-center p-4">
         <form
-          className="join-card"
+          className="w-full max-w-md space-y-5 rounded-2xl border border-white/10 bg-slate-900/80 p-8 shadow-2xl backdrop-blur"
           onSubmit={(event) => {
             event.preventDefault();
             void joinRoom();
           }}
         >
-          <div className="brand">
-            <h1>Disclike</h1>
-            <span>Real-Time Communication</span>
+          <div className="text-center">
+            <h1 className="text-3xl font-bold tracking-tight text-white">
+              Disclike
+            </h1>
+            <span className="text-sm text-slate-400">
+              Real-Time Communication
+            </span>
           </div>
 
-          <div className="form-group">
-            <label>Display Name</label>
+          <div className="space-y-1.5">
+            <label
+              htmlFor="displayName"
+              className="block text-sm font-medium text-slate-300"
+            >
+              Display Name
+            </label>
             <input
+              id="displayName"
               value={participantName}
-              onChange={(event) =>
-                setParticipantName(event.target.value)
-              }
+              onChange={(event) => setParticipantName(event.target.value)}
               placeholder="Masukkan nama Anda"
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2.5 text-white placeholder-slate-500 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40"
             />
           </div>
 
-          <div className="form-group">
-            <label>Room Name</label>
+          <div className="space-y-1.5">
+            <label
+              htmlFor="roomName"
+              className="block text-sm font-medium text-slate-300"
+            >
+              Room Name
+            </label>
             <input
+              id="roomName"
               value={roomName}
               onChange={(event) => setRoomName(event.target.value)}
               placeholder="Masukkan nama room"
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2.5 text-white placeholder-slate-500 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40"
             />
           </div>
 
-          {error && <p className="error-message">{error}</p>}
+          {error && (
+            <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-400">
+              {error}
+            </p>
+          )}
 
-          <button type="submit" disabled={loading}>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 font-semibold text-white transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:cursor-not-allowed disabled:opacity-60"
+          >
             {loading ? 'Connecting...' : 'Join Meeting'}
           </button>
 
-          <p className="helper-text">
+          <p className="text-center text-xs text-slate-500">
             Gunakan nama room yang sama untuk bertemu dengan peserta lain.
           </p>
         </form>
@@ -103,8 +125,10 @@ function App() {
   }
 
   return (
-    <main className="meeting-page">
+    <main className="h-screen w-screen bg-slate-950">
       <LiveKitRoom
+        data-lk-theme="default"
+        className="h-full"
         serverUrl={connection.serverUrl}
         token={connection.token}
         connect={true}
