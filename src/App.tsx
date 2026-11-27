@@ -55,7 +55,7 @@ function App() {
     return (
       <main className="flex min-h-screen items-center justify-center p-4">
         <form
-          className="w-full max-w-md space-y-5 rounded-2xl border border-white/10 bg-slate-900/80 p-8 shadow-2xl backdrop-blur"
+          className="w-full max-w-md space-y-5 rounded-2xl border border-white/10 bg-transparent p-8 shadow-2xl backdrop-blur"
           onSubmit={(event) => {
             event.preventDefault();
             void joinRoom();
